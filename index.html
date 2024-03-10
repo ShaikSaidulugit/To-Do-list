@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            align-items: center;
+            background-color: rgb(16, 128, 219);
+            text-align: center;
+        }
+        #container{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 40px;
+            
+        }
+        #uid{
+            width: 40%;
+            border: none;
+            height: 40px;
+            background: transparent;
+            border-bottom: 1px solid white;
+            color: white;
+        }
+        ::placeholder{
+            color: white;
+        }
+        input[type="button"]{
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            background-color: green;
+            width: 200px;
+            color: white;
+        }
+        input[type="button"]:hover{
+            background-color: rgb(83, 201, 5);
+            transition: all 0.4s;
+        }
+        li{
+            list-style-type: none;
+            color: white;
+            font-size: larger;
+        }
+        button{
+            margin: 20px;
+            width: 200px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            height: 40px;
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>TODO List</h1>
+    <div id="container">
+    <input type="text" id="uid" placeholder="Add Here to do">
+    <input type="button" onclick="Demo()" value="AddToDo">
+</div>
+
+    <script>
+        const Demo=()=>{
+            let data=document.querySelector('#uid')
+            let para=document.createElement('li')
+            let btn=document.createElement("button")
+            let btn1=document.createElement("button")
+            btn.innerText="Edit"
+            btn1.innerText="Delete"
+            para.innerHTML=data.value
+            document.body.appendChild(para)
+            document.body.appendChild(btn)
+            document.body.appendChild(btn1)
+
+            btn.addEventListener('click',function(){
+                let txt=prompt(para.innerText)
+                para.innerText=txt
+            })
+            
+            btn1.addEventListener('click',function(){
+                para.remove()
+                btn1.remove()
+                btn.remove()
+            })
+            if(data.value==""){
+                alert("Please enter your todo")
+                btn1.remove()
+                btn.remove()
+            }
+        }
+    </script>
+</body>
+</html>
